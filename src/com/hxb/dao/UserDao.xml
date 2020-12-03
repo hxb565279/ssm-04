@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace表示命名空间 -->
+<mapper namespace="com.hxb.dao.UserDao">
+   <select id="login" resultType="user" parameterType="String">
+       select * from ssm.user where username=#{username} and password =#{password}
+   </select>
+
+    <select id="login1" resultType="user" parameterType="String">
+        select * from ssm.user where username = #{username}
+    </select>
+
+    <insert id="register1" parameterType="String">
+        insert into ssm.user (username, password) VALUES (#{username},#{password})
+    </insert>
+    <select id="checkUser" parameterType="String" resultType="user">
+        select  * from ssm.user where user.username = #{username}
+    </select>
+    <select id="checkUser1" parameterType="String" resultType="user">
+        select * from ssm.user where username= #{username}
+    </select>
+    <update id="update_password1" parameterType="String">
+        update ssm.user set password=#{password} where username=#{username}
+    </update>
+    <select id="queryName" parameterType="String" resultType="String">
+        select username from ssm.user where username  like concat('%',#{username},'%')
+    </select>
+</mapper>
