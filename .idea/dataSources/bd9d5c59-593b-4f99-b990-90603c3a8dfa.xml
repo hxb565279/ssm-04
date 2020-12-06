@@ -727,22 +727,205 @@
     <user id="227" parent="1" name="test">
       <Host>%</Host>
     </user>
-    <table id="228" parent="15" name="user"/>
-    <column id="229" parent="228" name="id">
+    <table id="228" parent="3" name="base_dict">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="229" parent="3" name="customer">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="230" parent="3" name="sys_user">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="231" parent="3" name="user"/>
+    <column id="232" parent="228" name="dict_id">
+      <Position>1</Position>
+      <Comment>数据字典id(主键)</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="233" parent="228" name="dict_type_code">
+      <Position>2</Position>
+      <Comment>数据字典类别代码</Comment>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="234" parent="228" name="dict_type_name">
+      <Position>3</Position>
+      <Comment>数据字典类别名称</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="235" parent="228" name="dict_item_name">
+      <Position>4</Position>
+      <Comment>数据字典项目名称</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="236" parent="228" name="dict_item_code">
+      <Position>5</Position>
+      <Comment>数据字典项目代码(可为空)</Comment>
+      <DataType>varchar(10)|0s</DataType>
+    </column>
+    <column id="237" parent="228" name="dict_sort">
+      <Position>6</Position>
+      <Comment>排序字段</Comment>
+      <DataType>int(10)|0s</DataType>
+    </column>
+    <column id="238" parent="228" name="dict_enable">
+      <Position>7</Position>
+      <Comment>1:使用 0:停用</Comment>
+      <DataType>char(1)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="239" parent="228" name="dict_memo">
+      <Position>8</Position>
+      <Comment>备注</Comment>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <key id="240" parent="228" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>dict_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="241" parent="229" name="cust_id">
+      <Position>1</Position>
+      <Comment>客户编号(主键)</Comment>
+      <DataType>int(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="242" parent="229" name="cust_name">
+      <Position>2</Position>
+      <Comment>客户名称</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="243" parent="229" name="cust_user_id">
+      <Position>3</Position>
+      <Comment>负责人id</Comment>
+      <DataType>int(32)|0s</DataType>
+    </column>
+    <column id="244" parent="229" name="cust_create_id">
+      <Position>4</Position>
+      <Comment>创建人id</Comment>
+      <DataType>int(32)|0s</DataType>
+    </column>
+    <column id="245" parent="229" name="cust_source">
+      <Position>5</Position>
+      <Comment>客户信息来源</Comment>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="246" parent="229" name="cust_industry">
+      <Position>6</Position>
+      <Comment>客户所属行业</Comment>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="247" parent="229" name="cust_level">
+      <Position>7</Position>
+      <Comment>客户级别</Comment>
+      <DataType>varchar(32)|0s</DataType>
+    </column>
+    <column id="248" parent="229" name="cust_linkman">
+      <Position>8</Position>
+      <Comment>联系人</Comment>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="249" parent="229" name="cust_phone">
+      <Position>9</Position>
+      <Comment>固定电话</Comment>
+      <DataType>varchar(64)|0s</DataType>
+    </column>
+    <column id="250" parent="229" name="cust_mobile">
+      <Position>10</Position>
+      <Comment>移动电话</Comment>
+      <DataType>varchar(16)|0s</DataType>
+    </column>
+    <column id="251" parent="229" name="cust_zipcode">
+      <Position>11</Position>
+      <Comment>邮政编码</Comment>
+      <DataType>varchar(10)|0s</DataType>
+    </column>
+    <column id="252" parent="229" name="cust_address">
+      <Position>12</Position>
+      <Comment>联系地址</Comment>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <column id="253" parent="229" name="cust_createtime">
+      <Position>13</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <key id="254" parent="229" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>cust_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="255" parent="230" name="user_id">
+      <Position>1</Position>
+      <Comment>用户id</Comment>
+      <DataType>int(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="256" parent="230" name="user_code">
+      <Position>2</Position>
+      <Comment>用户账号</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="257" parent="230" name="user_name">
+      <Position>3</Position>
+      <Comment>用户名称</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="258" parent="230" name="user_password">
+      <Position>4</Position>
+      <Comment>用户密码</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="259" parent="230" name="user_state">
+      <Position>5</Position>
+      <Comment>1:正常,0:暂停</Comment>
+      <DataType>int(1)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="260" parent="230" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="261" parent="231" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="230" parent="228" name="username">
+    <column id="262" parent="231" name="username">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="231" parent="228" name="password">
+    <column id="263" parent="231" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <key id="232" parent="228" name="PRIMARY">
+    <column id="264" parent="231" name="id_card">
+      <Position>4</Position>
+      <Comment>èº«ä»½è¯&#x81;</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="265" parent="231" name="status">
+      <Position>5</Position>
+      <Comment>0:ç®¡ç&#x90;†å‘˜&#xd;
+1:æ™®é€šç”¨æˆ·</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="266" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

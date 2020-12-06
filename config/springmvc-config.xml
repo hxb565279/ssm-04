@@ -20,12 +20,18 @@
         <!-- 设置后缀 -->
         <property name="suffix" value=".jsp"/>
     </bean>
+    <!--配置静态资源的访问映射，此配置中的文件，将不被前端控制器拦截 -->
+<!--    <mvc:resources location="/js/" mapping="/js/**" />-->
+<!--    <mvc:resources location="/css/" mapping="/css/**" />-->
+<!--    <mvc:resources location="/fonts/" mapping="/fonts/**" />-->
+<!--    <mvc:resources location="/images/" mapping="/images/**" />-->
+<!--    <mvc:resources location="/update/" mapping="/update/**" />-->
+<!--    <mvc:resources location="/MP3/" mapping="/MP3/**" />-->
     <!-- 配置拦截器 -->
-    <!--    <mvc:interceptors>-->
-
-    <!--        <mvc:interceptor>-->
-    <!--            <mvc:mapping path="/**"/>-->
-    <!--            <bean class="com.hxb.interceptor.LoginInterceptor"/>-->
-    <!--        </mvc:interceptor>-->
-    <!--    </mvc:interceptors>-->
+<!--        <mvc:interceptors>-->
+<!--            <mvc:interceptor>-->
+<!--                <mvc:mapping path="/**"/>-->
+<!--                <bean class="com.hxb.interceptor.LoginInterceptor"/>-->
+<!--            </mvc:interceptor>-->
+<!--        </mvc:interceptors>-->
 </beans>

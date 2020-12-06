@@ -41,17 +41,17 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/../源代码/boot-crm/WebContent/WEB-INF/lib" />
+          <root url="file://$MODULE_DIR$/../../SSM/源代码/boot-crm/WebContent/WEB-INF/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/../源代码/boot-crm/WebContent/WEB-INF/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../../SSM/源代码/boot-crm/WebContent/WEB-INF/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
-    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>

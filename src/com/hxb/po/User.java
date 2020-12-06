@@ -4,6 +4,24 @@ public class User {
     private Integer id;
     private String username;
     private String password;
+  private String id_card;
+  private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getId_card() {
+        return id_card;
+    }
+
+    public void setId_card(String id_card) {
+        this.id_card = id_card;
+    }
 
     public Integer getId() {
         return id;

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE taglib
+   PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+   "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<!--<taglib>-->
+<!--    &lt;!&ndash; 指定标签库的版本号 &ndash;&gt;-->
+<!--    <tlib-version>2.0</tlib-version>-->
+<!--    &lt;!&ndash; 指定JSP的版本号 &ndash;&gt;-->
+<!--    <jsp-version>1.2</jsp-version>-->
+<!--    &lt;!&ndash; 指定标签库的名称 &ndash;&gt;-->
+<!--    <short-name>common</short-name>-->
+<!--    &lt;!&ndash; 指定标签库的URI &ndash;&gt;-->
+<!--    <uri>http://itheima.com/common/</uri>-->
+<!--    &lt;!&ndash; 指定标签库的显示名称 &ndash;&gt;-->
+<!--    <display-name>Common Tag</display-name>-->
+<!--    &lt;!&ndash; 指定标签库的描述 &ndash;&gt;-->
+<!--    <description>Common Tag library</description>-->
+<!--    &lt;!&ndash; 注册一个自定义标签 &ndash;&gt;-->
+<!--    <tag>-->
+<!--        &lt;!&ndash; 指定注册的自定义标签名称 &ndash;&gt;-->
+<!--        <name>page</name>-->
+<!--        &lt;!&ndash; 指定自定义标签的标签处理器类 &ndash;&gt;-->
+<!--        <tag-class>com.hxb.common.utils.NavigationTag</tag-class>-->
+<!--        &lt;!&ndash; 指定标签体类型 &ndash;&gt;-->
+<!--        <body-content>JSP</body-content>-->
+<!--        &lt;!&ndash; 描述 &ndash;&gt;-->
+<!--        <description>create navigation for paging</description>-->
+<!--        &lt;!&ndash; 指定标签中的属性 &ndash;&gt;-->
+<!--        <attribute>-->
+<!--            &lt;!&ndash; 指定属性名称 &ndash;&gt;-->
+<!--            <name>url</name>-->
+<!--            &lt;!&ndash; 该属性为true时表示其指定是属性为必须属性 &ndash;&gt;-->
+<!--            <required>true</required>-->
+<!--            &lt;!&ndash; 该属性用于指定能不能使用表达式来动态指定数据，为true时表示可以 &ndash;&gt;-->
+<!--            <rtexprvalue>true</rtexprvalue>-->
+<!--        </attribute>-->
+<!--        <attribute>-->
+<!--            <name>bean</name> -->
+<!--            <rtexprvalue>true</rtexprvalue>-->
+<!--        </attribute>-->
+<!--        <attribute>-->
+<!--            <name>number</name> -->
+<!--            <rtexprvalue>true</rtexprvalue>-->
+<!--        </attribute>-->
+<!--	</tag>-->
+<!--</taglib>-->

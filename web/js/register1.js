@@ -1,5 +1,6 @@
 $(document).ready(
     function () {
+
         $("#username1").blur(function () {
             if ($("#username1").val().length > 0) {
                 $.ajax({
@@ -11,18 +12,20 @@ $(document).ready(
                     success: function (data) {
                         if (data != null) {
                             $("#message").html("该账号已经存在,请登录");
-
-
                         }
                     },
                     error: function () {
                         $("#message").html("");
                     }
                 })
+            }else{
+                $("#message").html("");
             }
         })
     }
 )
+
+
 $(document).ready(
     function (){
         $("#re_password1").blur(

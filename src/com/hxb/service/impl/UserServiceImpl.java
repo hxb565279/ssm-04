@@ -17,18 +17,23 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public User login(String username, String password) {
-        return this.userDao.login(username,password);
+    public User login(String username, String password,String status) {
+        return this.userDao.login(username,password,status);
     }
 
+    @Override
+    public User findUser(String usercode, String password) {
+        User user = this.userDao.findUser(usercode, password);
+        return user;
+    }
     @Override
     public User login1(String username) {
         return this.userDao.login1(username);
     }
 
     @Override
-    public int register1(String username, String password) {
-        return this.userDao.register1(username,password);
+    public int register1(String username, String password,String id_card,String status) {
+        return this.userDao.register1(username,password,id_card,status);
     }
 
     @Override
@@ -39,6 +44,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public User checkUser1(String username) {
         return this.userDao.checkUser1(username);
+    }
+
+    @Override
+    public User checkUser2(String username, String id_card) {
+        return this.userDao.checkUser2(username,id_card);
+    }
+
+    @Override
+    public User checkId(String id_card) {
+        return this.userDao.checkId(id_card);
     }
 
     @Override

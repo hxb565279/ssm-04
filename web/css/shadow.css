@@ -3,21 +3,28 @@
     padding: 0;
 
 }
+body{
+    position: relative;
 
+    height: 100%;
+    width: 100%;
+}
 
 
 .shadow1{
 
     width: 360px;
-    height: 420px;
+    height: 440px;
     background-color: #c779d0;
     border-radius: 25px;
-    position: relative;
+    position: absolute;
+    top: 200px;
+    left: 780px;
 
 
 }
 .shadow-form1{
-   width: 300px;
+   width: 320px;
     height: 380px;
     border-radius: 25px;
     position: absolute;
@@ -27,7 +34,9 @@
 
 .shadow1-text1{
     position: absolute;
-    left: 80px;
+    background: linear-gradient(to left,#d3959b,#bfe6ba);
+    left: 60px;
+    border-radius: 20px;
 }
 .shadow1-input1{
     position: absolute;
@@ -38,6 +47,11 @@
     position: absolute;
     top: 270px;
     left: 44px;
+}
+.shadow1-href{
+    position: absolute;
+    top: 350px;
+    left: 75px;
 }
 
 .shadow1-input2{

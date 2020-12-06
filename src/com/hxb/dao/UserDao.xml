@@ -4,26 +4,40 @@
 <!-- namespace表示命名空间 -->
 <mapper namespace="com.hxb.dao.UserDao">
    <select id="login" resultType="user" parameterType="String">
-       select * from ssm.user where username=#{username} and password =#{password}
+       select * from boot_crm.user where username=#{username} and password =#{password} and status = #{status}
    </select>
 
     <select id="login1" resultType="user" parameterType="String">
-        select * from ssm.user where username = #{username}
+        select * from boot_crm.user where username = #{username}
     </select>
 
     <insert id="register1" parameterType="String">
-        insert into ssm.user (username, password) VALUES (#{username},#{password})
+        insert into boot_crm.user (username, password,id_card,status) VALUES (#{username},#{password},#{id_card},#{status})
     </insert>
     <select id="checkUser" parameterType="String" resultType="user">
-        select  * from ssm.user where user.username = #{username}
+        select  * from boot_crm.user where user.username = #{username}
     </select>
     <select id="checkUser1" parameterType="String" resultType="user">
-        select * from ssm.user where username= #{username}
+        select * from boot_crm.user where username= #{username}
+    </select>
+    <select id="checkUser2" parameterType="String" resultType="user">
+        select * from boot_crm.user where username=#{username} and id_card = #{id_card}
+    </select>
+    <select id="checkId" resultType="user" parameterType="String">
+        select * from boot_crm.user where id_card = #{id_card}
     </select>
     <update id="update_password1" parameterType="String">
-        update ssm.user set password=#{password} where username=#{username}
+        update boot_crm.user set password=#{password} where username=#{username}
     </update>
     <select id="queryName" parameterType="String" resultType="String">
-        select username from ssm.user where username  like concat('%',#{username},'%')
+        select username from boot_crm.user where username  like concat('%',#{username},'%')
+    </select>
+    <!-- 查询用户 -->
+    <select id="findUser" parameterType="String" resultType="user">
+        select *
+        from sys_user
+        where user_code = #{usercode}
+          and user_password =#{password}
+          and user_state = '1'
     </select>
 </mapper>

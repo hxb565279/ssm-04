@@ -15,31 +15,14 @@ $(document).ready(
     }
 )
 
-function first() {
-    let username = $("#username_check1").val();
-    if (username===""){
-        quit();
-    }
-}
+
 
 function quit(){
-    $("#shadow1").hide();
+    document.getElementById("shadow-username1").value = "";
+     document.getElementById("shadow-password1").value= "";
+     document.getElementById("shadow-password2").value = "";
 }
-// setTimeout(check1,"10000");
-//     function check1(){
-//         let username = $("#username_check1").val();
-//         let password= $("#username-check2").val();
-//         if (username===""&&password===""){
-//             $("#username_check1").hide();
-//             $("#username-check2").hide();
-//         }else {
-//             $("#username-check3").hide();
-            // $("#username_check1").visible();
-            // $("#username-check2").visible();
 
-    //     }
-    // }
-    //
 
 
 
