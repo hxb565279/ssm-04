@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="../css/common1.css"/>
     <link rel="stylesheet" href="../css/index.css"/>
 </head>
+<style>
+    body{
+        background-color: #D7FFF0;
+    }
+</style>
 <body>
 
 <!--快捷导航-->
@@ -45,9 +50,9 @@
                 <ul  class=" ">
                     <li class="arrow-icon"><a href="https://github.com/hxb565279">学习网</a></li>
                     <li></li>
-                    <li class="arrow-icon"><a href="${pageContext.request.contextPath}/toCustomer">ssm</a></li>
+                    <li class="arrow-icon"><a href="${pageContext.request.contextPath}/toIndex">ssm</a></li>
                     <li></li>
-                    <li class="arrow-icon">我的命</li>
+                    <li class="arrow-icon"><a href="${pageContext.request.contextPath}/toMain3">舔砖</a></li>
                     <li></li>
                     <li class="arrow-icon">心理咨询网</li>
                     <li></li>

@@ -4,19 +4,35 @@ import com.hxb.po.Customer;
 
 import java.util.List;
 
+/**
+    Customer接口文件
+   */
 public interface CustomerDao {
-    //客户列表
-    public List<Customer> selectCustomerList(Customer customer);
-    //客户数
-    public Integer selectCustomerListCount(Customer customer);
 
-    // 创建客户
-    public int createCustomer(Customer customer);
-    // 通过id查询客户
-    public Customer getCustomerById(Integer id);
-    // 更新客户信息
-    public int updateCustomer(Customer customer);
-    // 删除客户
-    int deleteCustomer (Integer id);
 
+/**
+ * 根据ID查询客户信息
+ */
+Customer findCustomerById(Integer id);
+
+    /**\
+     * 全查询
+     * @return 列表
+     */
+    List<Customer> selectAllCustomer();
+
+    /**
+     * 根据id删除
+     */
+      int deleteCustomerById(Integer id);
+    /**
+     * 根据id修改
+     */
+     int updateCustomer(Customer customer);
+    /**
+     * 添加
+     */
+    int   addCustomer(Customer customer);
+
+    List<Customer> selectCustomer(Customer customer);
 }

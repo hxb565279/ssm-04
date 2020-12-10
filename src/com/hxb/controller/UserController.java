@@ -167,7 +167,7 @@ public class UserController {
 
     @RequestMapping(value = "/toCustomer",method = RequestMethod.GET)
     public  String toCustomer(){
-        return "customer";
+        return "customer1";
     }
 
     //自动填充
@@ -177,4 +177,13 @@ public class UserController {
         return this.userService.queryName(username);
     }
 
+    @RequestMapping(value = "/toIndex")
+    public String toIndex(){
+        return "index";
+    }
+
+    @RequestMapping(value = "toMain3")
+    public String toMain3(){
+        return "main3";
+    }
 }

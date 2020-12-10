@@ -1,134 +1,161 @@
 package com.hxb.controller;
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
 
-import javax.servlet.http.HttpSession;
 
-import com.hxb.common.utils.Page;
-import com.hxb.service.BaseDictService;
+import com.hxb.po.Customer;
 import com.hxb.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.hxb.po.BaseDict;
-import com.hxb.po.Customer;
-import com.hxb.po.User;
 
-/**
- * 客户管理控制器类
- */
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class CustomerController {
-	// 依赖注入
-	@Autowired
-	private CustomerService customerService;
-	@Autowired
-	private BaseDictService baseDictService;
-	// 客户来源
-	@Value("${customer.from.type}")
-	private String FROM_TYPE;
-	// 客户所属行业
-	@Value("${customer.industry.type}")
-	private String INDUSTRY_TYPE;
-	// 客户级别
-	@Value("${customer.level.type}")
-	private String LEVEL_TYPE;
-	/**
-	 *  客户列表
-	 */
-	@RequestMapping(value = "/customer/list.action")
-	public String list(@RequestParam(defaultValue="1")Integer page,
-			@RequestParam(defaultValue="10")Integer rows, 
-			String custName, String custSource, String custIndustry,
-			String custLevel, Model model) {
-		// 条件查询所有客户
-		Page<Customer> customers = customerService
-				.findCustomerList(page, rows, custName, 
-                                        custSource, custIndustry,custLevel);
-		model.addAttribute("page", customers);
-		// 客户来源
-		List<BaseDict> fromType = baseDictService
-				.findBaseDictByTypeCode(FROM_TYPE);
-		// 客户所属行业
-		List<BaseDict> industryType = baseDictService
-				.findBaseDictByTypeCode(INDUSTRY_TYPE);
-		// 客户级别
-		List<BaseDict> levelType = baseDictService
-				.findBaseDictByTypeCode(LEVEL_TYPE);
-		// 添加参数
-		model.addAttribute("fromType", fromType);
-		model.addAttribute("industryType", industryType);
-		model.addAttribute("levelType", levelType);
-		model.addAttribute("custName", custName);
-		model.addAttribute("custSource", custSource);
-		model.addAttribute("custIndustry", custIndustry);
-		model.addAttribute("custLevel", custLevel);
-		return "customer";
-	}
-	
-	/**
-	 * 创建客户
-	 */
-	@RequestMapping("/customer/create.action")
-	@ResponseBody
-	public String customerCreate(Customer customer,HttpSession session) {
-	    // 获取Session中的当前用户信息
-	    User user = (User) session.getAttribute("USER_SESSION");
-	    // 将当前用户id存储在客户对象中
-	    customer.setCust_create_id(user.getId());
-	    // 创建Date对象
-	    Date date = new Date();
-	    // 得到一个Timestamp格式的时间，存入mysql中的时间格式“yyyy/MM/dd HH:mm:ss”
-	    Timestamp timeStamp = new Timestamp(date.getTime());
-	    customer.setCust_createtime(timeStamp);
-	    // 执行Service层中的创建方法，返回的是受影响的行数
-	    int rows = customerService.createCustomer(customer);
-	    if(rows > 0){
-	        return "OK";
-	    }else{
-	        return "FAIL";
-	    }
-	}
+    @Autowired
+    private CustomerService customerService;
 
-	/**
-	 * 通过id获取客户信息
-	 */
-	@RequestMapping("/customer/getCustomerById.action")
-	@ResponseBody
-	public Customer getCustomerById(Integer id) {
-		return customerService.getCustomerById(id);
-	}
-	/**
-	 * 更新客户
-	 */
-	@RequestMapping("/customer/update.action")
-	@ResponseBody
-	public String customerUpdate(Customer customer) {
-	    int rows = customerService.updateCustomer(customer);
-	    if(rows > 0){
-	        return "OK";
-	    }else{
-	        return "FAIL";
-	    }
-	}
+    /**
+     * 根据ID查询客户详情
+     */
+    @RequestMapping("/findCustomerById")
+    public String findCustomerById(Integer id, Model model) {
+        Customer customer = this.customerService.findCustomerById(id);
+        model.addAttribute("customer", customer);
 
-	/**
-	 * 删除客户
-	 */
-	@RequestMapping("/customer/delete.action")
-	@ResponseBody
-	public String customerDelete(Integer id) {
-	    int rows = customerService.deleteCustomer(id);
-	    if(rows > 0){			
-	        return "OK";
-	    }else{
-	        return "FAIL";			
-	    }
-	}
+        //返回客户页面展示
+        return "customer";
+    }
+
+    @RequestMapping(value = "getCustomer")
+    @ResponseBody
+    public Customer getCustomer(Integer id) {
+        return this.customerService.findCustomerById(id);
+    }
+
+    @RequestMapping(value = "/toCustomer")
+    public String toCustomer() {
+        return "customer";
+    }
+
+    @RequestMapping(value = "/updateCustomer1")
+    @ResponseBody
+    public String updateCustomer1(Customer customer) {
+        int num = this.customerService.updateCustomer(customer);
+        if (num > 0) {
+            return "OK";
+        } else {
+            return "FAIL";
+        }
+    }
+
+
+    /**
+     * 全查询
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping("/selectAllCustomer")
+    public String selectAllCustomer(Model model) {
+        Map<Integer, Customer> map = new HashMap<>();
+        for (Customer customer : customerService.selectAllCustomer()) {
+            map.put(customer.getId(), customer);
+        }
+        model.addAttribute("customer", map);
+        return "customer";
+    }
+
+    @RequestMapping("/selectCustomer")
+    public String selectCustomer(Customer customer,Model model){
+        Map<Integer,Customer> map = new HashMap<>();
+        for (Customer customer1: customerService.selectCustomer(customer)){
+            map.put(customer1.getId(),customer1);
+        }
+        model.addAttribute("customer",map);
+        return "customer";
+    }
+    @RequestMapping("/selectCustomer2")
+    public String selectCustomer1(Customer customer,Model model){
+        Map<Integer,Customer> map = new HashMap<>();
+        for (Customer customer1: customerService.selectCustomer(customer)){
+            map.put(customer1.getId(),customer1);
+        }
+        model.addAttribute("customer",map);
+        return "person2";
+    }
+
+
+    @RequestMapping("/selectCustomer1")
+    public String selectCustomer1(Model model){
+        Map<Integer,Customer> map = new HashMap<>();
+        for (Customer customer1: customerService.selectAllCustomer()){
+            map.put(customer1.getId(),customer1);
+        }
+        model.addAttribute("customer",map);
+        return "person2";
+    }
+
+    /**
+     * 根据id 删除
+     */
+    @RequestMapping(value = "/deleteCustomerById")
+    public String deleteCustomerById(Integer id, Model model) {
+        int num = this.customerService.deleteCustomerById(id);
+        if (num > 0) {
+            model.addAttribute("msg", "删除成功");
+
+        } else {
+            model.addAttribute("msg", "删除失败");
+        }
+        return "customer";
+    }
+
+    @RequestMapping(value = "/deleteCustomer")
+    @ResponseBody
+    public String deleteCustomer(Integer id) {
+        int num = this.customerService.deleteCustomerById(id);
+        if (num > 0) {
+            return "OK";
+        } else {
+            return "FAIL";
+        }
+    }
+
+
+    /**
+     * 根据id更新
+     */
+    @RequestMapping(value = "/updateCustomerById")
+    public String updateCustomerById(Customer customer, Model model) {
+        int num = this.customerService.updateCustomer(customer);
+        if (num > 0) {
+            model.addAttribute("msg1", "更新成功");
+        } else {
+            model.addAttribute("msg1", "更新失败");
+        }
+        return "customer";
+    }
+
+    /**
+     * 添加
+     */
+
+    @RequestMapping(value = "/addCustomer")
+    @ResponseBody
+    public String addCustomer(Customer customer) {
+        int num = this.customerService.addCustomer(customer);
+        if (num > 0) {
+            return "OK";
+        } else {
+            return "FAIL";
+        }
+
+    }
+
+
 
 }

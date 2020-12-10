@@ -3,162 +3,72 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace表示命名空间 -->
 <mapper namespace="com.hxb.dao.CustomerDao">
-             <!--sql片段-->
-           <sql id="selectCustomerListWhere">
-               <where>
-                   <if test="cust_name != null" >
-                       cust_name like "%"#{cust_name}"%"
-                   </if>
-                   <if test="cust_source != null" >
-                       and cust_source = #{cust_source}
-                   </if>
-                   <if test="cust_industry != null" >
-                       and cust_industry = #{cust_industry}
-                   </if>
-                   <if test="cust_level != null" >
-                       and cust_level = #{cust_level}
-                   </if>
-               </where>
-           </sql>
-    <!-- 查询客户列表  -->
-    <select id="selectCustomerList" parameterType="customer"
-            resultType="customer">
-        SELECT
-        cust_id,
-        cust_name,
-        cust_user_id,
-        cust_create_id,
-        b.dict_item_name cust_source,
-        c.dict_item_name cust_industry,
-        d.dict_item_name cust_level,
-        cust_linkman,
-        cust_phone,
-        cust_mobile,
-        cust_createtime
-        FROM
-        boot_crm.customer a
-        LEFT JOIN (
-        SELECT
-        dict_id,
-        dict_item_name
-        FROM
-        boot_crm.base_dict
-        WHERE
-        dict_type_code = '002'
-        ) b ON a.cust_source = b.dict_id
-        LEFT JOIN (
-        SELECT
-        dict_id,
-        dict_item_name
-        FROM
-        boot_crm.base_dict
-        WHERE
-        dict_type_code = '001'
-        ) c ON a.cust_industry = c.dict_id
-        LEFT JOIN (
-        SELECT
-        dict_id,
-        dict_item_name
-        FROM
-        boot_crm.base_dict
-        WHERE
-        dict_type_code = '006'
-        ) d ON a.cust_level = d.dict_id
-        <include refid="selectCustomerListWhere"/>
-        <!-- 执行分页查询 -->
-        <if test="start !=null and rows != null">
-            limit #{start},#{rows}
-        </if>
+    <!--根据id查询客户信息-->
+    <select id="findCustomerById" parameterType="Integer" resultType="customer">
+        select *
+        from maven.t_customer
+        where id = #{id}
     </select>
-    <!-- 查询客户总数 -->
-    <select id="selectCustomerListCount" parameterType="customer"
-            resultType="Integer">
-        select count(*) from boot_crm.customer
-        <include refid="selectCustomerListWhere"/>
+    <select id="selectAllCustomer" resultType="Customer">
+        select *
+        from maven.t_customer;
     </select>
-
-    <!-- 添加客户 -->
-    <insert id="createCustomer" parameterType="customer">
-        insert into boot_crm.customer(
-            cust_name,
-            cust_user_id,
-            cust_create_id,
-            cust_source,
-            cust_industry,
-            cust_level,
-            cust_linkman,
-            cust_phone,
-            cust_mobile,
-            cust_zipcode,
-            cust_address,
-            cust_createtime
-        )
-        values(#{cust_name},
-               #{cust_user_id},
-               #{cust_create_id},
-               #{cust_source},
-               #{cust_industry},
-               #{cust_level},
-               #{cust_linkman},
-               #{cust_phone},
-               #{cust_mobile},
-               #{cust_zipcode},
-               #{cust_address},
-               #{cust_createtime}
-              )
-    </insert>
-    <!-- 根据id获取客户信息 -->
-    <select id="getCustomerById" parameterType="Integer"
-            resultType="customer">
-        select * from boot_crm.customer where cust_id = #{id}
-    </select>
-    <!-- 更新客户 -->
-    <update id="updateCustomer" parameterType="customer">
-        update boot_crm.customer
-        <set>
-            <if test="cust_name!=null">
-                cust_name=#{cust_name},
-            </if>
-            <if test="cust_user_id!=null">
-                cust_user_id=#{cust_user_id},
-            </if>
-            <if test="cust_create_id!=null">
-                cust_create_id=#{cust_create_id},
-            </if>
-            <if test="cust_source!=null">
-                cust_source=#{cust_source},
-            </if>
-            <if test="cust_industry!=null">
-                cust_industry=#{cust_industry},
-            </if>
-            <if test="cust_level!=null">
-                cust_level=#{cust_level},
-            </if>
-            <if test="cust_linkman!=null">
-                cust_linkman=#{cust_linkman},
-            </if>
-            <if test="cust_phone!=null">
-                cust_phone=#{cust_phone},
-            </if>
-            <if test="cust_mobile!=null">
-                cust_mobile=#{cust_mobile},
-            </if>
-            <if test="cust_zipcode!=null">
-                cust_zipcode=#{cust_zipcode},
-            </if>
-            <if test="cust_address!=null">
-                cust_address=#{cust_address},
-            </if>
-            <if test="cust_createtime!=null">
-                cust_createtime=#{cust_createtime},
-            </if>
-        </set>
-        where cust_id=#{cust_id}
-    </update>
-    <!-- 删除客户 -->
-    <delete id="deleteCustomer" parameterType="Integer">
-        delete from boot_crm.customer where cust_id=#{id}
+    <!--根据id删除-->
+    <delete id="deleteCustomerById" parameterType="Integer">
+        delete
+        from maven.t_customer
+        where id = #{id}
     </delete>
+    <!--修改-->
+    <update id="updateCustomer" parameterType="Customer">
+        update maven.t_customer
+        <set>
+            <if test="username!=null and username !=''">
+                username = #{username}
+            </if>
+            <if test="jobs!=null and jobs!=''">
+                , jobs =#{jobs}
+            </if>
+            <if test="phone!=null and phone!=''">
+                ,phone = #{phone}
+            </if>
 
+        </set>
+        where id= #{id}
+    </update>
 
+    <insert id="addCustomer" parameterType="Customer">
+        insert into maven.t_customer (id, username, jobs, phone)
+        VALUES (#{id}, #{username}, #{jobs}, #{phone})
+    </insert>
+
+    <select id="selectCustomer" parameterType="Customer" resultType="Customer">
+        select *
+        from maven.t_customer
+        <bind name="username1" value="'%'+username+'%'"/>
+        <bind name="jobs1" value="'%'+jobs+'%'"/>
+        <bind name="phone1" value="'%'+phone+'%'"/>
+      <where>
+          <if test="username!=null and username!=''  " >
+           and  username like  #{username1}
+          </if>
+          <if test="jobs!=null and jobs!=''  ">
+            and  jobs like  #{jobs1}
+          </if>
+          <if test="phone!=null and phone!=''   ">
+            and  phone  like   #{phone1}
+          </if>
+<!--          <if test="jobs!=null and jobs!='' and username!=null and username!=''">-->
+<!--            username like  #{username1}  and jobs  like   #{jobs1}-->
+<!--          </if>-->
+<!--           <if test="jobs!=null and jobs!='' and phone!=null and phone!=''">-->
+<!--              jobs  like  #{jobs1} and phone=#{phone1}-->
+
+<!--           </if>-->
+<!--          <if test="username!=null and username!='' and jobs!=null and jobs!='' and phone!=null and phone !=''">-->
+<!--              username like     #{username1} and    jobs  like  #{jobs1} and      phone  like   #{phone1}-->
+<!--          </if>-->
+      </where>
+
+    </select>
 </mapper>
