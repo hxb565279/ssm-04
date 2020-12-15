@@ -3,41 +3,98 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace表示命名空间 -->
 <mapper namespace="com.hxb.dao.UserDao">
-   <select id="login" resultType="user" parameterType="String">
-       select * from boot_crm.user where username=#{username} and password =#{password} and status = #{status}
-   </select>
+    <select id="login" resultType="user" parameterType="String">
+        select *
+        from boot_crm.user
+        where username = #{username}
+          and password = #{password}
+          and status = #{status}
+    </select>
 
     <select id="login1" resultType="user" parameterType="String">
-        select * from boot_crm.user where username = #{username}
+        select *
+        from boot_crm.user
+        where username = #{username}
     </select>
 
     <insert id="register1" parameterType="String">
-        insert into boot_crm.user (username, password,id_card,status) VALUES (#{username},#{password},#{id_card},#{status})
+        insert into boot_crm.user (username, password, id_card, status)
+        VALUES (#{username}, #{password}, #{id_card}, #{status})
     </insert>
     <select id="checkUser" parameterType="String" resultType="user">
-        select  * from boot_crm.user where user.username = #{username}
+        select *
+        from boot_crm.user
+        where user.username = #{username}
     </select>
     <select id="checkUser1" parameterType="String" resultType="user">
-        select * from boot_crm.user where username= #{username}
+        select *
+        from boot_crm.user
+        where username = #{username}
     </select>
     <select id="checkUser2" parameterType="String" resultType="user">
-        select * from boot_crm.user where username=#{username} and id_card = #{id_card}
+        select *
+        from boot_crm.user
+        where username = #{username}
+          and id_card = #{id_card}
     </select>
     <select id="checkId" resultType="user" parameterType="String">
-        select * from boot_crm.user where id_card = #{id_card}
+        select *
+        from boot_crm.user
+        where id_card = #{id_card}
     </select>
     <update id="update_password1" parameterType="String">
-        update boot_crm.user set password=#{password} where username=#{username}
+        update boot_crm.user
+        set password=#{password}
+        where username = #{username}
     </update>
     <select id="queryName" parameterType="String" resultType="String">
-        select username from boot_crm.user where username  like concat('%',#{username},'%')
+        select username
+        from boot_crm.user
+        where username like concat('%', #{username}, '%')
     </select>
     <!-- 查询用户 -->
     <select id="findUser" parameterType="String" resultType="user">
         select *
         from sys_user
         where user_code = #{usercode}
-          and user_password =#{password}
+          and user_password = #{password}
           and user_state = '1'
+    </select>
+
+    <select id="selectAllUser" resultType="com.hxb.po.User">
+        select *
+        from boot_crm.user
+    </select>
+
+    <update id="updateManager1" parameterType="User">
+        update boot_crm.user
+        set status = 1
+        where id = #{id}
+    </update>
+
+    <update id="updateManager2" parameterType="User">
+        update boot_crm.user
+        set status=0
+        where id = #{id}
+    </update>
+
+    <select id="selectManager" resultType="com.hxb.po.User" parameterType="com.hxb.po.User">
+        select *
+        from  boot_crm.user
+        <bind name="username1" value="'%' + username + '%'"/>
+        <bind name="id_card1" value="'%' + id_card + '%'"/>
+        <bind name="status1" value="'%' + status + '%'"/>
+        <where>
+            <if test="username != null and username != ''">
+                and username like #{username1}
+            </if>
+            <if test="id_card != null and id_card != ''">
+                and id_card like #{id_card1}
+            </if>
+            <if test="status != null and status != ''">
+                and status   like  #{status1}
+            </if>
+        </where>
+        ;
     </select>
 </mapper>

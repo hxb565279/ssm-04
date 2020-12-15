@@ -58,16 +58,6 @@
           <if test="phone!=null and phone!=''   ">
             and  phone  like   #{phone1}
           </if>
-<!--          <if test="jobs!=null and jobs!='' and username!=null and username!=''">-->
-<!--            username like  #{username1}  and jobs  like   #{jobs1}-->
-<!--          </if>-->
-<!--           <if test="jobs!=null and jobs!='' and phone!=null and phone!=''">-->
-<!--              jobs  like  #{jobs1} and phone=#{phone1}-->
-
-<!--           </if>-->
-<!--          <if test="username!=null and username!='' and jobs!=null and jobs!='' and phone!=null and phone !=''">-->
-<!--              username like     #{username1} and    jobs  like  #{jobs1} and      phone  like   #{phone1}-->
-<!--          </if>-->
       </where>
 
     </select>

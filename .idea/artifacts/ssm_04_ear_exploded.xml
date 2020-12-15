@@ -44,6 +44,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/../源代码/boot-crm/WebContent/WEB-INF/lib/spring-expression-4.3.6.RELEASE.jar" />
         <element id="library" level="project" name="Java EE 6-Java EE 6" />
       </element>
+      <element id="library" level="application" name="vue" />
     </root>
   </artifact>
 </component>

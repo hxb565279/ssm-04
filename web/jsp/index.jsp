@@ -39,7 +39,7 @@
                     </li>
                     <li class="s2"><a href="#" ><span>图书管理</span></a>
                         <ul class="p3 a3">
-                            <li><a href="javascript:;" target="mainframe"></a></li>
+                            <li><a href="${pageContext.request.contextPath}/selectAllUser" target="mainframe">添加管理</a></li>
                             <li><a href="javascript:;" target="mainframe">编辑</a></li>
                             <li><a href="javascript:;" target="mainframe">保管</a></li>
                         </ul>

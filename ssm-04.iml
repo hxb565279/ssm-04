@@ -53,5 +53,6 @@
         <jarDirectory url="file://$MODULE_DIR$/../../SSM/源代码/boot-crm/WebContent/WEB-INF/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="vue" level="application" />
   </component>
 </module>

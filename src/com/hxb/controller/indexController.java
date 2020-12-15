@@ -3,6 +3,9 @@ package com.hxb.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * @author 和学博
+ */
 @Controller
 public class indexController {
     @RequestMapping(value = "/toPerson1")
@@ -17,4 +20,12 @@ public class indexController {
    public String toPerson3(){
         return "person3";
     }
+
+
+    @RequestMapping(value = "/toAddManager")
+    public String toManager(){
+        return "addManager";
+    }
+
+
 }

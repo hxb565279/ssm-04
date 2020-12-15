@@ -22,6 +22,13 @@
     body{
         background-color: #D7FFF0;
     }
+    #main4{
+        position: absolute;
+        left: 20%;
+        top:18%;
+        width: 1500px;
+        height: 800px;
+    }
 </style>
 <body>
 
@@ -60,10 +67,9 @@
                     <li></li>
                     <li class="arrow-icon">个人资料</li>
                     <li></li>
-                    <li class="arrow-icon">管理
-                        <ul class=" ">
+                    <li class="arrow-icon">
+                        <a href="${pageContext.request.contextPath}/selectAllUser"   target="frame_main">添加管理</a>
 
-                        </ul>
                     </li>
                 </ul>
             </div>
@@ -83,17 +89,19 @@
         <!--hot模块-->
         <div class="hotwords">
             <a href="#" class="style_read">办公 </a>
-            <a href="#"> 个人中心</a>
-            <a href="#">信息管理</a>
+            <a href="#" target="frame_main"> 个人中心</a>
+            <a href="${pageContext.request.contextPath}/selectCustomer1" target="frame_main">信息管理</a>
             <a href="#"> 商品管理</a>
             <a href="#"> python</a>
             <a href="#"> php</a>
             <a href="#"> math</a>
         </div>
-
     </header>
-
-
 </form>
+<div class="main3">
+    <iframe name="frame_main" id="main4"  frameborder="0">
+
+    </iframe>
+</div>
 </body>
 </html>

@@ -1,5 +1,9 @@
 package com.hxb.po;
 
+/**
+ * @author 和学博
+ */
+
 public class User {
     private Integer id;
     private String username;
@@ -45,5 +49,16 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", id_card='" + id_card + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

@@ -28,7 +28,7 @@
                         <a href="" class="city1">[切换城市]</a>
                     </div>
                     <ul class="ulList clearFixed fl">
-                        <li><a href="#">页</a></li>
+                        <li><a href="${pageContext.request.contextPath}/toMain3">主页</a></li>
                         <li><a href="#">青岛</a></li>
                         <li><a href="#">校园</a></li>
                         <li><a href="#">言</a></li>
@@ -37,8 +37,8 @@
                 </div>
                 <div class="conRight fr">
                     <ul class="ulList clearFixed">
-                        <li><a href="" class="login btn"><span></span>登录</a></li>
-                        <li><a href="" class="login2"><span>|</span>注册</a></li>
+                        <li><a href="${pageContext.request.contextPath}/toLogin" class="login btn"><span></span>登录</a></li>
+                        <li><a href="${pageContext.request.contextPath}/toRegister" class="login2"><span>|</span>注册</a></li>
                         <li><a href="" class="btn app"><span></span>APP</a></li>
                         <li><a href="#" target="_blank">进入企业</a></li>
                     </ul>
@@ -56,7 +56,7 @@
                 <label>
                     职业可选项:  <select class="option">
                          <c:forEach var="customer" items="${customer}">
-                             <option    >${customer.value.jobs}</option>
+                             <option>${customer.value.jobs}</option>
                         </c:forEach>
                     </select>
                    职业: <input type="text" name="jobs" class="input22">

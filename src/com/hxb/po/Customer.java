@@ -1,40 +1,89 @@
 package com.hxb.po;
 
+/**
+ * The type Customer.
+ *
+ * @author 和学博
+ */
 public class Customer {
-    private Integer id;//id
-    private String username;//客户名称
-    private String jobs;//职业
-    private String phone; //电话
+    //id
+    private Integer id;
+    //客户名称
+    private String username;
+    //职业
+    private String jobs;
+    //电话
+    private String phone;
 
-    public Integer getId() {
+  /**
+   * Gets id.
+   *
+   * @return the id
+   */
+  public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+  /**
+   * Sets id.
+   *
+   * @param id the id
+   */
+  public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getUsername() {
+  /**
+   * Gets username.
+   *
+   * @return the username
+   */
+  public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+  /**
+   * Sets username.
+   *
+   * @param username the username
+   */
+  public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getJobs() {
+  /**
+   * Gets jobs.
+   *
+   * @return the jobs
+   */
+  public String getJobs() {
         return jobs;
     }
 
-    public void setJobs(String jobs) {
+  /**
+   * Sets jobs.
+   *
+   * @param jobs the jobs
+   */
+  public void setJobs(String jobs) {
         this.jobs = jobs;
     }
 
-    public String getPhone() {
+  /**
+   * Gets phone.
+   *
+   * @return the phone
+   */
+  public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+  /**
+   * Sets phone.
+   *
+   * @param phone the phone
+   */
+  public void setPhone(String phone) {
         this.phone = phone;
     }
 }

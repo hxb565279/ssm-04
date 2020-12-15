@@ -26,6 +26,27 @@ public class UserServiceImpl implements UserService {
         User user = this.userDao.findUser(usercode, password);
         return user;
     }
+
+    @Override
+    public List<User> selectAllUser() {
+        return this.userDao.selectAllUser();
+    }
+
+    @Override
+    public int updateManager1(Integer id, String status) {
+        return this.userDao.updateManager1(id,status);
+    }
+
+    @Override
+    public int updateManager2(Integer id, String status) {
+        return this.userDao.updateManager2(id,status);
+    }
+
+    @Override
+    public List< User> selectManager(String username, String id_card, String status) {
+        return this.userDao.selectManager(username,id_card,status);
+    }
+
     @Override
     public User login1(String username) {
         return this.userDao.login1(username);

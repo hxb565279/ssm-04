@@ -7,6 +7,7 @@
         <element id="directory" name="classes">
           <element id="module-output" name="ssm-04" />
           <element id="library" level="application" name="jquery" />
+          <element id="library" level="application" name="vue" />
         </element>
         <element id="directory" name="lib">
           <element id="file-copy" path="$PROJECT_DIR$/../源代码/boot-crm/WebContent/WEB-INF/lib/asm-5.1.jar" />
