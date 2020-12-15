@@ -26,6 +26,9 @@ public class indexController {
     public String toManager(){
         return "addManager";
     }
-
+   @RequestMapping(value = "/toCustomer1")
+    public String toCustomer1(){
+        return "customer1";
+   }
 
 }

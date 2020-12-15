@@ -35,11 +35,11 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <name>bean</name>
+            <name>bean</name> 
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <name>number</name>
+            <name>number</name> 
             <rtexprvalue>true</rtexprvalue>
         </attribute>
 	</tag>

@@ -37,10 +37,10 @@
                             <li><a  href="${pageContext.request.contextPath}/toPerson3" target="mainframe" >个人空间</a></li>
                         </ul>
                     </li>
-                    <li class="s2"><a href="#" ><span>图书管理</span></a>
+                    <li class="s2"><a href="#" ><span>管理</span></a>
                         <ul class="p3 a3">
                             <li><a href="${pageContext.request.contextPath}/selectAllUser" target="mainframe">添加管理</a></li>
-                            <li><a href="javascript:;" target="mainframe">编辑</a></li>
+                            <li><a href="${pageContext.request.contextPath}/customer/list.action" target="mainframe">顾客管理1</a></li>
                             <li><a href="javascript:;" target="mainframe">保管</a></li>
                         </ul>
                     </li>
